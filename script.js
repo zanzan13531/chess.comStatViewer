@@ -11,4 +11,6 @@ form.addEventListener("submit", (event)=>{
     //console.log(data.username.value);
     //console.log(data.remember.value);
 
+    return false;
+
 });
