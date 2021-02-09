@@ -1,6 +1,6 @@
 const form = document.querySelector("#searchbar");
 
-form.addEventListener("submit", (event)=>{
+form.addEventListener("Search", (event)=>{
 
     event.preventDefault();
 
