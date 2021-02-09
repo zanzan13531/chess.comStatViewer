@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form id="my-form">
+            <input type="text" name="username">
+            <select name="remember">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        <script type="text/javascript">
+            const form = document.querySelector("#my-form");
+            form.addEventListener("submit", (event)=>{
+                event.preventDefault();
+                const data = form.elements;
+
+                console.log(data.username.value);
+                console.log(data.remember.value);
+            });
+        </script>
+    </body>
+</html>
