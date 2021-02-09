@@ -1,4 +1,4 @@
-const form = document.querySelector("#my-form");
+const form = document.querySelector("#searchbar");
 
 form.addEventListener("submit", (event)=>{
 
