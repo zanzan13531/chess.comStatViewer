@@ -7,7 +7,7 @@ var playerProfileAPILink = "https://api.chess.com/pub/player/"; // plus username
 // monthly game archives avaliable = https://api.chess.com/pub/player/{username}/games/archives
 // actual games from montly archives = https://api.chess.com/pub/player/{username}/games/{YYYY}/{MM}
 
-var additionalPlayerInfoShown = true;
+var additionalUserInfoShown = true;
 
 var usernamey;
 var capitalizedUsername;
@@ -98,17 +98,17 @@ function searchForData(usernameQuery) {
 
 function additionalUserInformation() {
 
-    if (additionalPlayerInfoShown) {
+    if (additionalUserInfoShown) {
 
-        additionalPlayerInfo.hidden = true;
+        additionalUserInfo.hidden = true;
         expandAdditionalUserInfo.innerText = "[+]";
-        additionalPlayerInfoShown = false;
+        additionalUserInfoShown = false;
 
     } else {
 
-        additionalPlayerInfo.hidden = false;
+        additionalUserInfo.hidden = false;
         expandAdditionalUserInfo.innerText = "[-]";
-        additionalPlayerInfoShown = true;
+        additionalUserInfoShown = true;
 
     }
 
