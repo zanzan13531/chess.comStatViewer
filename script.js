@@ -50,8 +50,10 @@ function searchForData(usernameQuery) {
 
                 var temporaryUrlHolder = data.url.split("/");
                 capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
+
                 usernameText.innerText = capitalizedUsername;
-                userProfileLink.innerText = data.url;
+                usernameText.href = data.url;
+
                 playerID.innerText = data.player_id;
                 if (data.hasOwnProperty("title")) {
                     playerTitle.innerText = data.title;
