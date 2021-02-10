@@ -51,6 +51,8 @@ function searchForData(usernameQuery) {
                 var temporaryUrlHolder = data.url.split("/");
                 capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
 
+                profilePicture.src = data.avatar;
+                
                 usernameText.innerText = capitalizedUsername;
                 usernameText.href = data.url;
 
@@ -68,7 +70,6 @@ function searchForData(usernameQuery) {
                     location.innerText = data.location;
                     location.hidden = false;
                 }
-                profilePicture.innerText = data.avatar;
                 country.innerText = data.country;
                 joinDate.innerText = timeConverter(data.joined);
                 lastOnline.innerText = timeConverter(data.last_online);
