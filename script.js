@@ -31,6 +31,13 @@ function searchForData(usernameQuery) {
     var playerProfileLink = playerProfileAPILink + usernameQuery;
 
     fetch(playerProfileLink).then(r=>r.json()).then(data=>{
+
+        if (data.code == 0) {
+
+            showUserNotFound();
+            return;
+
+        }
     
         var temporaryUrlHolder = data.url.split("/");
         capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
