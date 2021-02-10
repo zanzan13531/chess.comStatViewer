@@ -7,6 +7,7 @@ var playerProfileAPILink = "https://api.chess.com/pub/player/"; // plus username
 // monthly game archives avaliable = https://api.chess.com/pub/player/{username}/games/archives
 // actual games from montly archives = https://api.chess.com/pub/player/{username}/games/{YYYY}/{MM}
 
+var additionalPlayerInfoShown = true;
 
 var usernamey;
 var capitalizedUsername;
@@ -92,6 +93,24 @@ function searchForData(usernameQuery) {
         }
 
     });
+
+}
+
+function additionalUserInformation() {
+
+    if (additionalPlayerInfoShown) {
+
+        additionalPlayerInfo.hidden = true;
+        expandAdditionalUserInfo.innerText = "[+]";
+        additionalPlayerInfoShown = false;
+
+    } else {
+
+        additionalPlayerInfo.hidden = false;
+        expandAdditionalUserInfo.innerText = "[-]";
+        additionalPlayerInfoShown = true;
+
+    }
 
 }
 

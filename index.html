@@ -40,19 +40,25 @@
 
             <img src="" alt="Profile Picture" id="profilePicture">
             <a id="usernameText" href="https://www.chess.com/member/{username}" target="_blank">username</a>
-            
-            <p id="playerID">id_number</p>
             <p id="playerTitle" hidden>only if relevant</p>
             <p id="accountStatus">account status</p>
-            <p id="suppliedName" hidden>only if relevant</p>
-            <p id="location" hidden>only if relevant</p>
-            <p id="country">country</p>
-            <p id="joinDate">join date</p>
-            <p id="lastOnline">last online date</p>
-            <p id="followers">followers</p>
-            <p id="isStreamer">is streamer?</p>
-            <p id="twitchUrl" hidden>twitch_url</p>
-            <p id="fideRating" hidden>self reported fide rating</p>
+
+            <p id="expandAdditionalUserInfo" onclick="additionalUserInformation()">[-]</p>
+
+            <div id="additionalUserInfo">
+            
+                <p id="playerID">id_number</p>
+                <p id="suppliedName" hidden>only if relevant</p>
+                <p id="location" hidden>only if relevant</p>
+                <p id="country">country</p>
+                <p id="joinDate">join date</p>
+                <p id="lastOnline">last online date</p>
+                <p id="followers">followers</p>
+                <p id="isStreamer">is streamer?</p>
+                <p id="twitchUrl" hidden>twitch_url</p>
+                <p id="fideRating" hidden>self reported fide rating</p>
+
+            </div>
 
         </div>
 
