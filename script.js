@@ -30,20 +30,31 @@ function searchForData(usernameQuery) {
 
     var playerProfileLink = playerProfileAPILink + usernameQuery;
 
-    fetch(playerProfileLink).then(r=>r.json()).then(data=>{
+    fetch(playerProfileLink).then(r=>{
 
-        if (data.code == 0) {
+        if (r.status == 404) {
 
             showUserNotFound();
             return;
 
-        }
-    
-        var temporaryUrlHolder = data.url.split("/");
-        capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
-        usernameText.innerText = capitalizedUsername;
+        } else if (r.status == 410 || r.status == 429) {
 
-        showResults();
+            showAnErrorOccured();
+            return;
+
+        } else {
+
+            r.json().then(data=>{
+    
+                var temporaryUrlHolder = data.url.split("/");
+                capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
+                usernameText.innerText = capitalizedUsername;
+        
+                showResults();
+        
+            })
+
+        }
 
     });
 
@@ -52,6 +63,7 @@ function searchForData(usernameQuery) {
 function hideAll() { //searchbarPart is always visible
 
     userNotFound.hidden = true;
+    anErrorOccured.hidden = true;
     userInfo.hidden = true;
     timeControlRatingInfo.hidden = true;
     openingInfo.hidden = true;
@@ -61,7 +73,15 @@ function hideAll() { //searchbarPart is always visible
 function showUserNotFound() {
 
     hideAll();
+    userNotFound.innerText = "No user found with the username of " + usernamey;
     userNotFound.hidden = false;
+
+}
+
+function showAnErrorOccured() {
+
+    hideAll();
+    anErrorOccured.hidden = false;
 
 }
 
