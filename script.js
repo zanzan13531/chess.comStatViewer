@@ -46,9 +46,41 @@ function searchForData(usernameQuery) {
 
             r.json().then(data=>{
     
+                // data.hasOwnProperty("title")
+
                 var temporaryUrlHolder = data.url.split("/");
                 capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
                 usernameText.innerText = capitalizedUsername;
+                userProfileLink.innerText = data.url;
+                playerID.innerText = data.player_id;
+                if (data.hasOwnProperty("title")) {
+                    playerTitle.innerText = data.title;
+                    playerTitle.hidden = false;
+                }
+                accountStatus.innerText = data.status;
+                if (data.hasOwnProperty("name")) {
+                    suppliedName.innerText = data.name;
+                    suppliedName.hidden = false;
+                }
+                if (data.hasOwnProperty("location")) {
+                    location.innerText = data.location;
+                    location.hidden = false;
+                }
+                profilePicture.innerText = data.avatar;
+                country.innerText = data.country;
+                joinDate.innerText = timeConverter(data.joined);
+                lastOnline.innerText = timeConverter(data.last_online);
+                followers.innerText = data.followers;
+                isStreamer.innerText = "Not a streamer.";
+                if (data.is_streamer) {
+                    isStreamer.innerText = "Streamer.";
+                    twitchUrl.innerText = data.twitch_url;
+                    twitchUrl.hidden = false;
+                }
+                if (data.hasOwnProperty(fide)) {
+                    fideRating.innerText = data.fide + " (Self reported)";
+                    fideRating.hidden = false;
+                }
         
                 showResults();
         
@@ -93,3 +125,16 @@ function showResults() {
     openingInfo.hidden = false;
 
 }
+
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
