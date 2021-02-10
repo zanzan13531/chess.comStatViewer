@@ -36,6 +36,8 @@ function searchForData(usernameQuery) {
         capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
         usernameText.innerText = capitalizedUsername;
 
+        showResults();
+
     });
 
 }
