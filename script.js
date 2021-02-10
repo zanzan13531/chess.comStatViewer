@@ -77,7 +77,7 @@ function searchForData(usernameQuery) {
                     twitchUrl.innerText = data.twitch_url;
                     twitchUrl.hidden = false;
                 }
-                if (data.hasOwnProperty(fide)) {
+                if (data.hasOwnProperty("fide")) {
                     fideRating.innerText = data.fide + " (Self reported)";
                     fideRating.hidden = false;
                 }
