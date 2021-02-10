@@ -1,5 +1,15 @@
 hideAll();
 
+var playerProfileAPILink = "https://api.chess.com/pub/player/"; // plus username at the end
+// player profile = https://api.chess.com/pub/player/{username}
+// player stats = https://api.chess.com/pub/player/{username}/stats
+// player online status = https://api.chess.com/pub/player/{username}/is-online
+// monthly game archives avaliable = https://api.chess.com/pub/player/{username}/games/archives
+// actual games from montly archives = https://api.chess.com/pub/player/{username}/games/{YYYY}/{MM}
+
+
+var usernamey;
+var capitalizedUsername;
 const form = document.querySelector("#searchbar");
 
 form.addEventListener("submit", (event)=>{
@@ -8,23 +18,27 @@ form.addEventListener("submit", (event)=>{
 
     const data = form.elements;
 
-    usernameText.innerText = data.username.value;
+    usernamey = data.username.value;
 
-    if (data.username.value == "no user") {
+    searchForData(usernamey);
 
-        showUserNotFound();
-
-    } else {
-
-        showResults();
-
-    }
-    //console.log(data.username.value);
-    //console.log(data.remember.value);
-
-    return false;
+    return (false);
 
 });
+
+function searchForData(usernameQuery) {
+
+    var playerProfileLink = playerProfileAPILink + usernameQuery;
+
+    fetch(playerProfileLink).then(r=>r.json()).then(data=>{
+    
+        var temporaryUrlHolder = data.url.split("/");
+        capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
+        usernameText.innerText = capitalizedUsername;
+
+    });
+
+}
 
 function hideAll() { //searchbarPart is always visible
 
