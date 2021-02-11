@@ -49,50 +49,62 @@ function searchForData(usernameQuery) {
     
                 // data.hasOwnProperty("title")
 
-                var temporaryUrlHolder = data.url.split("/");
-                capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
-
-                profilePicture.src = data.avatar;
-                
-                usernameText.innerText = capitalizedUsername;
-                usernameText.href = data.url;
-
-                playerID.innerText = data.player_id;
-                if (data.hasOwnProperty("title")) {
-                    playerTitle.innerText = data.title;
-                    playerTitle.hidden = false;
-                }
-                accountStatus.innerText = data.status;
-                if (data.hasOwnProperty("name")) {
-                    suppliedName.innerText = data.name;
-                    suppliedName.hidden = false;
-                }
-                if (data.hasOwnProperty("location")) {
-                    location.innerText = data.location;
-                    location.hidden = false;
-                }
-                country.innerText = data.country;
-                joinDate.innerText = timeConverter(data.joined);
-                lastOnline.innerText = timeConverter(data.last_online);
-                followers.innerText = data.followers;
-                isStreamer.innerText = "Not a streamer.";
-                if (data.is_streamer) {
-                    isStreamer.innerText = "Streamer.";
-                    twitchUrl.innerText = data.twitch_url;
-                    twitchUrl.hidden = false;
-                }
-                if (data.hasOwnProperty("fide")) {
-                    fideRating.innerText = data.fide + " (Self reported)";
-                    fideRating.hidden = false;
-                }
-        
-                showResults();
+                userInfoPane(data);
         
             })
 
         }
 
     });
+
+    showResults();
+
+}
+
+function timeControlRatingInfo() {
+
+
+
+}
+
+function userInfoPane(data) {
+
+    var temporaryUrlHolder = data.url.split("/");
+    capitalizedUsername = temporaryUrlHolder[temporaryUrlHolder.length - 1];
+
+    profilePicture.src = data.avatar;
+    
+    usernameText.innerText = capitalizedUsername;
+    usernameText.href = data.url;
+
+    playerID.innerText = data.player_id;
+    if (data.hasOwnProperty("title")) {
+        playerTitle.innerText = data.title;
+        playerTitle.hidden = false;
+    }
+    accountStatus.innerText = data.status;
+    if (data.hasOwnProperty("name")) {
+        suppliedName.innerText = data.name;
+        suppliedName.hidden = false;
+    }
+    if (data.hasOwnProperty("location")) {
+        location.innerText = data.location;
+        location.hidden = false;
+    }
+    country.innerText = data.country;
+    joinDate.innerText = timeConverter(data.joined);
+    lastOnline.innerText = timeConverter(data.last_online);
+    followers.innerText = data.followers;
+    isStreamer.innerText = "Not a streamer.";
+    if (data.is_streamer) {
+        isStreamer.innerText = "Streamer.";
+        twitchUrl.innerText = data.twitch_url;
+        twitchUrl.hidden = false;
+    }
+    if (data.hasOwnProperty("fide")) {
+        fideRating.innerText = data.fide + " (Self reported)";
+        fideRating.hidden = false;
+    }
 
 }
 
