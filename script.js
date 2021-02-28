@@ -61,7 +61,13 @@ function searchForData(usernameQuery) {
 
 }
 
-function timeControlRatingInfo() {
+function timeControlRatingInfoPane() {
+
+
+
+}
+
+function openingInfoPane() {
 
 
 
@@ -102,7 +108,7 @@ function userInfoPane(data) {
         twitchUrl.hidden = false;
     }
     if (data.hasOwnProperty("fide")) {
-        fideRating.innerText = data.fide + " (Self reported)";
+        fideRating.innerText = data.fide + " (Self reported)";  
         fideRating.hidden = false;
     }
 
