@@ -29,7 +29,39 @@ form.addEventListener("submit", (event)=>{
 
 function searchForData(usernameQuery) {
 
+
+    //user info pane
     var playerProfileLink = playerProfileAPILink + usernameQuery;
+
+    fetch(playerProfileLink).then(r=>{
+
+        if (r.status == 404) {
+
+            showUserNotFound();
+            return;
+
+        } else if (r.status == 410 || r.status == 429) {
+
+            showAnErrorOccured();
+            return;
+
+        } else {
+
+            r.json().then(data=>{
+    
+                // data.hasOwnProperty("title")
+
+                userInfoPane(data);
+        
+            })
+
+        }
+
+    });
+
+
+    //player stats pane
+    var playerStatsLink = playerProfileAPILink + usernameQuery + "/stats";
 
     fetch(playerProfileLink).then(r=>{
 
@@ -61,9 +93,70 @@ function searchForData(usernameQuery) {
 
 }
 
-function timeControlRatingInfoPane() {
+function timeControlRatingInfoPane(data) {
+
+    //daily
+    var dwins = data.chess_daily.record.win;
+    var ddraws = data.chess_daily.record.draw;
+    var dlosses = data.chess_daily.record.loss;
+    var dtotals = dwins + ddraws + dlosses;
+
+    dailyRating.innerText = "Rating: " + data.chess_daily.last.rating;
+    dailyMaxRating.innerText = "Best Rating: " + data.chess_daily.best.rating;
+    dailyMaxDate.innerText = "Achieved on: " + timeConverter(data.chess_daily.best.date);
+    dailyWins.innerText = "Wins: " + dwins;
+    dailyDraws.innerText = "Draws: " + ddraws;
+    dailyLosses.innerText = "Losses: " + dlosses;
+    dailyTotalGames.innerText = "Games Played: " + dtotals;
+    dailyWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (dwins + ddraws * 0.5) / (dtotal));
 
 
+    //bullet
+    var buwins = data.chess_bullet.record.win;
+    var budraws = data.chess_bullet.record.draw;
+    var bulosses = data.chess_bullet.record.loss;
+    var butotals = buwins + budraws + bulosses;
+
+    bulletRating.innerText = "Rating: " + data.chess_bullet.last.rating;
+    bulletMaxRating.innerText = "Best Rating: " + data.chess_bullet.best.rating;
+    bulletMaxDate.innerText = "Achieved on: " + timeConverter(data.chess_bullet.best.date);
+    bulletWins.innerText = "Wins: " + buwins;
+    bulletDraws.innerText = "Draws: " + budraws;
+    bulletLosses.innerText = "Losses: " + bulosses;
+    bulletTotalGames.innerText = "Games Played: " + butotals;
+    bulletWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (buwins + budraws * 0.5) / (butotal));
+
+
+    //blitz
+    var blwins = data.chess_blitz.record.win;
+    var bldraws = data.chess_blitz.record.draw;
+    var bllosses = data.chess_blitz.record.loss;
+    var bltotals = blwins + bldraws + bllosses;
+
+    blitzRating.innerText = "Rating: " + data.chess_blitz.last.rating;
+    blitzMaxRating.innerText = "Best Rating: " + data.chess_blitz.best.rating;
+    blitzMaxDate.innerText = "Achieved on: " + timeConverter(data.chess_blitz.best.date);
+    blitzWins.innerText = "Wins: " + blwins;
+    blitzDraws.innerText = "Draws: " + bldraws;
+    blitzLosses.innerText = "Losses: " + bllosses;
+    blitzTotalGames.innerText = "Games Played: " + bltotals;
+    blitzWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (blwins + bldraws * 0.5) / (bltotal));
+
+
+    //rapid
+    var rwins = data.chess_rapid.record.win;
+    var rdraws = data.chess_rapid.record.draw;
+    var rlosses = data.chess_rapid.record.loss;
+    var rtotals = rwins + rdraws + rlosses;
+
+    rapidRating.innerText = "Rating: " + data.chess_rapid.last.rating;
+    rapidMaxRating.innerText = "Best Rating: " + data.chess_rapid.best.rating;
+    rapidMaxDate.innerText = "Achieved on: " + timeConverter(data.chess_rapid.best.date);
+    rapidWins.innerText = "Wins: " + rwins;
+    rapidDraws.innerText = "Draws: " + rdraws;
+    rapidLosses.innerText = "Losses: " + rlosses;
+    rapidTotalGames.innerText = "Games Played: " + rtotals;
+    rapidWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (rwins + rdraws * 0.5) / (rtotal));
 
 }
 
