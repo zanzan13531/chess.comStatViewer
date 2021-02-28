@@ -101,7 +101,7 @@ function timeControlRatingInfoPane(data) {
         var dwins = data.chess_daily.record.win;
         var ddraws = data.chess_daily.record.draw;
         var dlosses = data.chess_daily.record.loss;
-        var dtotals = dwins + ddraws + dlosses;
+        var dtotal = dwins + ddraws + dlosses;
 
         dailyRating.innerText = "Rating: " + data.chess_daily.last.rating;
         dailyMaxRating.innerText = "Best Rating: " + data.chess_daily.best.rating;
@@ -109,7 +109,7 @@ function timeControlRatingInfoPane(data) {
         dailyWins.innerText = "Wins: " + dwins;
         dailyDraws.innerText = "Draws: " + ddraws;
         dailyLosses.innerText = "Losses: " + dlosses;
-        dailyTotalGames.innerText = "Games Played: " + dtotals;
+        dailyTotalGames.innerText = "Games Played: " + dtotal;
         dailyWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (dwins + ddraws * 0.5) / (dtotal));
 
         daily.hidden = false;
@@ -124,7 +124,7 @@ function timeControlRatingInfoPane(data) {
         var buwins = data.chess_bullet.record.win;
         var budraws = data.chess_bullet.record.draw;
         var bulosses = data.chess_bullet.record.loss;
-        var butotals = buwins + budraws + bulosses;
+        var butotal = buwins + budraws + bulosses;
 
         bulletRating.innerText = "Rating: " + data.chess_bullet.last.rating;
         bulletMaxRating.innerText = "Best Rating: " + data.chess_bullet.best.rating;
@@ -132,7 +132,7 @@ function timeControlRatingInfoPane(data) {
         bulletWins.innerText = "Wins: " + buwins;
         bulletDraws.innerText = "Draws: " + budraws;
         bulletLosses.innerText = "Losses: " + bulosses;
-        bulletTotalGames.innerText = "Games Played: " + butotals;
+        bulletTotalGames.innerText = "Games Played: " + butotal;
         bulletWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (buwins + budraws * 0.5) / (butotal));
 
         bullet.hidden = false;
@@ -147,7 +147,7 @@ function timeControlRatingInfoPane(data) {
         var blwins = data.chess_blitz.record.win;
         var bldraws = data.chess_blitz.record.draw;
         var bllosses = data.chess_blitz.record.loss;
-        var bltotals = blwins + bldraws + bllosses;
+        var bltotal = blwins + bldraws + bllosses;
 
         blitzRating.innerText = "Rating: " + data.chess_blitz.last.rating;
         blitzMaxRating.innerText = "Best Rating: " + data.chess_blitz.best.rating;
@@ -155,7 +155,7 @@ function timeControlRatingInfoPane(data) {
         blitzWins.innerText = "Wins: " + blwins;
         blitzDraws.innerText = "Draws: " + bldraws;
         blitzLosses.innerText = "Losses: " + bllosses;
-        blitzTotalGames.innerText = "Games Played: " + bltotals;
+        blitzTotalGames.innerText = "Games Played: " + bltotal;
         blitzWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (blwins + bldraws * 0.5) / (bltotal));
 
         blitz.hidden = false;
@@ -170,7 +170,7 @@ function timeControlRatingInfoPane(data) {
         var rwins = data.chess_rapid.record.win;
         var rdraws = data.chess_rapid.record.draw;
         var rlosses = data.chess_rapid.record.loss;
-        var rtotals = rwins + rdraws + rlosses;
+        var rtotal = rwins + rdraws + rlosses;
 
         rapidRating.innerText = "Rating: " + data.chess_rapid.last.rating;
         rapidMaxRating.innerText = "Best Rating: " + data.chess_rapid.best.rating;
@@ -178,7 +178,7 @@ function timeControlRatingInfoPane(data) {
         rapidWins.innerText = "Wins: " + rwins;
         rapidDraws.innerText = "Draws: " + rdraws;
         rapidLosses.innerText = "Losses: " + rlosses;
-        rapidTotalGames.innerText = "Games Played: " + rtotals;
+        rapidTotalGames.innerText = "Games Played: " + rtotal;
         rapidWinLossRatio.innerText = "Win/Loss Percentage: " + (100 * (rwins + rdraws * 0.5) / (rtotal));
 
         rapid.hidden = false;
