@@ -82,6 +82,8 @@ function searchForData(usernameQuery) {
                 // data.hasOwnProperty("title")
 
                 timeControlRatingInfoPane(data2);
+
+                console.log(data2);
         
             })
 
