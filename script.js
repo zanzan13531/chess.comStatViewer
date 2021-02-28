@@ -63,7 +63,7 @@ function searchForData(usernameQuery) {
     //player stats pane
     var playerStatsLink = playerProfileAPILink + usernameQuery + "/stats";
 
-    fetch(playerProfileLink).then(r=>{
+    fetch(playerStatsLink).then(r=>{
 
         if (r.status == 404) {
 
@@ -77,13 +77,11 @@ function searchForData(usernameQuery) {
 
         } else {
 
-            r.json().then(data2=>{
+            r.json().then(data=>{
     
                 // data.hasOwnProperty("title")
 
-                timeControlRatingInfoPane(data2);
-
-                console.log(data2);
+                timeControlRatingInfoPane(data);
         
             })
 
