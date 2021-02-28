@@ -77,13 +77,11 @@ function searchForData(usernameQuery) {
 
         } else {
 
-            r.json().then(data=>{
+            r.json().then(data2=>{
     
                 // data.hasOwnProperty("title")
 
-                timeControlRatingInfoPane(data);
-
-                console.log(data);
+                timeControlRatingInfoPane(data2);
         
             })
 
